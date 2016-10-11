@@ -1,0 +1,2 @@
+{ "AuthServerWhitelist": "weblogin.stanford.edu",
+  "AuthNegotiateDelegateWhitelist": "weblogin.stanford.edu" }

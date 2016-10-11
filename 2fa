@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+# Requires yubioauth to be setup with no touch
+
+if [ $# -ne 1 ];
+then
+  echo "Provide exactly one argument -- authentication target"
+  exit
+fi;
+
+yubioath show $1 | awk '{print $NF}' | xclip -selection clipboard
