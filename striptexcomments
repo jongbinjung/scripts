@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+# Created: 2017-02-14
+# Author: jongbin
+
+for i in "$@"; do
+  if [[ ${i} == *.tex ]]; then
+    latexpand --empty-comments ${i} > public_${i}
+    sed -i '/^\s*%/d' public_${i}
+  fi
+done
