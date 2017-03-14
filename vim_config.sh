@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ./configure --with-features=huge \
   --enable-multibyte \
   --enable-hangulinput \
