@@ -3,11 +3,13 @@
 # Created: 2016-12-16
 # Author: jongbin
 
+CREDPATH="$PWD/creds"
 OCPID=$(pidof openconnect)
 
 if [[ $OCPID == "" ]]; then
   if [[ -r creds ]]; then
-    source creds
+    # shellcheck source=creds
+    source $CREDPATH
     KEY=$(yubioath show "stanford" | awk '{print $NF}')
     sudo echo -e "$VPNPASS\n$KEY" | sudo openconnect -b \
       --user=jongbin \
@@ -15,7 +17,7 @@ if [[ $OCPID == "" ]]; then
       --authgroup=Full \
       https://su-vpn.stanford.edu
   else
-    echo "Automate password input by creating credential file named cred with variable \$VPNPASS"
+    echo "Automate password input by declaring variable \$VPNPASS in credential file ($CREDPATH)"
     sudo openconnect -b \
       --user=jongbin \
       --authgroup=Full \
