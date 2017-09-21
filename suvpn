@@ -3,4 +3,20 @@
 # Created: 2016-12-16
 # Author: jongbin
 
-sudo openconnect --authgroup=Full -u jongbin su-vpn.stanford.edu
+if [[ -r creds ]]; then
+  source creds
+  KEY=$(yubioath show "stanford" | awk '{print $NF}')
+  sudo echo -e "$VPNPASS\n$KEY" | sudo openconnect -b \
+    --user=jongbin \
+    --passwd-on-stdin \
+    --authgroup=Full \
+    https://su-vpn.stanford.edu
+else
+  echo "Automate password input by creating credential file named cred with variable \$VPNPASS"
+  sudo openconnect -b \
+    --user=jongbin \
+    --authgroup=Full \
+    https://su-vpn.stanford.edu
+fi
+
+echo -e "Connection running in background. Stop with suvpndown"
