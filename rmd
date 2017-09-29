@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Execute an Rmarkdown file
+
+Rscript -e "rmarkdown::render('$1')"
