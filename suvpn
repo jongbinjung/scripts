@@ -3,13 +3,13 @@
 # Created: 2016-12-16
 # Author: jongbin
 
-CREDPATH="$PWD/creds"
+CREDPATH="$HOME/creds"
 OCPID=$(pidof openconnect)
 
 if [[ $OCPID == "" ]]; then
-  if [[ -r creds ]]; then
-    # shellcheck source=creds
-    source $CREDPATH
+  if [[ -r $CREDPATH ]]; then
+    # shellcheck source=/home/jongbin/creds
+    source "$CREDPATH"
     KEY=$(yubioath show "stanford" | awk '{print $NF}')
     sudo echo -e "$VPNPASS\n$KEY" | sudo openconnect -b \
       --user=jongbin \
