@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Created: 2016-12-16
+# Author: jongbin
+
+CREDPATH="$HOME/creds"
+
+if [[ -r $CREDPATH ]]; then
+  # shellcheck source=/home/jongbin/creds
+  source "$CREDPATH"
+  echo "Kinit with SU"
+  echo -e "$SU" | kinit
+else
+  echo "Automate password input by declaring variable \$SU in credential file ($CREDPATH)"
+  kinit
+fi
+
+exit 0
