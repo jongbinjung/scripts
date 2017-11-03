@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Execute a pynb file
+
+jupyter nbconvert "$1"

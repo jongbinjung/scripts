@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # Requires yubioauth to be setup with no touch
 
@@ -8,4 +8,4 @@ then
   exit
 fi;
 
-yubioath show $1 | awk '{print $NF}' | xclip -selection clipboard
+yubioath show "$1" | awk '{print $NF}' | xclip -selection clipboard

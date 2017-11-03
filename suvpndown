@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Created: 2017-09-20
+# Author: jongbin
+
+OCPID=$(pidof openconnect)
+sudo kill -2 "$OCPID"
+
+echo "Cleaning up ssh logins"
+rm -v "$HOME"/.ssh/*soal*
