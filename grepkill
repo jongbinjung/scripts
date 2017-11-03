@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Created: 2017-11-03
+# Author: jongbin
+# Description: Kill processes that match argument (via grep)
+
+echo "PIDs matching expression:"
+ps -fu jongbin | grep "$1" | grep -v grep
+echo "Kill all matches?"
+select yn in "Yes" "No"
+do
+  case $yn in
+    Yes)
+    echo "Killing:"
+    ps -fu jongbin | grep "$1" | grep -v grep | awk '{print $8}'
+    echo "Are you sure???"
+    select sure in "Yes" "No"
+      do
+        case $sure in
+          Yes)
+            kill -9 `ps -fu jongbin | grep "$1" | grep -v PID | grep -v grep | \
+              awk '{print $2}'`
+            break ;;
+          No)
+            exit ;;
+        esac
+      done
+      break ;;
+    No)
+      exit ;;
+  esac
+done
