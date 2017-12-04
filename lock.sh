@@ -1,6 +1,7 @@
 #!/bin/bash
 
 scrot /tmp/screen.png
+# gnome-screenshot -f /tmp/screen.png -d 0
 convert /tmp/screen.png -scale 5% -scale 2000% /tmp/screen.png
 
 if [[ -f $HOME/.config/screen-lock.png ]]
