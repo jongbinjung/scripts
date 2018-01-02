@@ -1,0 +1,8 @@
+# Find and replace with ag (the_silver_searcher)
+# ag <https://github.com/ggreer/the_silver_searcher>
+# usage: rag [search] [replace]
+# TODO(jongbin): check pattern and use better separator?
+# caveats: will choke if either arguments contain a forward slash
+# notes: will back up changed files to *.bak files
+
+ag -0 -l $1 | xargs -0 sed -ri.bak -e "s/$1/$2/g"
