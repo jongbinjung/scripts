@@ -8,4 +8,4 @@ then
   exit
 fi;
 
-yubioath show "$1" | awk '{print $NF}' | xclip -selection clipboard
+ykman oath code "$1" | awk '{print $NF}' | xclip -selection clipboard

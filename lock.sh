@@ -1,9 +1,10 @@
 #!/bin/bash
 
 scrot /tmp/screen.png
-convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
+# gnome-screenshot -f /tmp/screen.png -d 0
+convert /tmp/screen.png -scale 5% -scale 2000% /tmp/screen.png
 
-if [[ -f $HOME/.config/screen-lock.png ]] 
+if [[ -f $HOME/.config/screen-lock.png ]]
 then
   # placement x/y
   PX=0
@@ -27,7 +28,7 @@ then
     convert /tmp/screen.png "$HOME"/.config/screen-lock.png \
       -geometry +"$PX"+"$PY" -composite -matte  /tmp/screen.png
   done
-fi 
+fi
 # dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify \
 #   /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
 

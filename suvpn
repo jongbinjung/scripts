@@ -10,7 +10,7 @@ if [[ $OCPID == "" ]]; then
   if [[ -r $CREDPATH ]]; then
     # shellcheck source=/home/jongbin/creds
     source "$CREDPATH"
-    KEY=$(yubioath show "stanford" | awk '{print $NF}')
+    KEY=$(ykman oath code "stanford" | awk '{print $NF}')
     sudo echo -e "$SU\n$KEY" | sudo openconnect -b \
       --user=jongbin \
       --passwd-on-stdin \
