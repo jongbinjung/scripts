@@ -2,6 +2,7 @@
 
 ./configure --with-features=huge \
   --prefix="$HOME"/.local \
+  --with-x \
   --enable-multibyte \
   --enable-fontset \
   --enable-luainterp \
