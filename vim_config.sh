@@ -10,6 +10,3 @@
   --enable-rubyinterp \
   --enable-pythoninterp \
   --enable-python3interp
-  # --enable-hangulinput \
-  #--enable-gui=gtk2 \
-  #--with-python-config-dir=/usr/lib/python2.7/config \
